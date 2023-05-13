@@ -1,0 +1,22 @@
+.btn-primary {
+    width: 150px;
+    border-radius: 3px;
+    letter-spacing: 1.5px;
+    margin-top: 1rem;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .search-container input[type="text"] {
+    margin: 0 0.5rem;
+  }
+  
+  .search-results {
+    margin-top: 2rem;
+  }
+  

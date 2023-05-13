@@ -1,0 +1,79 @@
+.register-container {
+    padding: 20px;
+  }
+  
+  .register-row {
+    margin-top: 50px;
+  }
+  
+  .register-second-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .register-second-row a {
+    font-size: 18px;
+    color: #4c4c4c;
+    text-decoration: none;
+    padding-bottom: 10px;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .register-second-row a.active,
+  .register-second-row a:hover {
+    border-bottom: 2px solid #2d3b55;
+  }
+  
+  .register-third-row {
+    margin-top: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    height: 50px;
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  }
+  
+  .form-control:focus {
+    border-color: #2d3b55;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(45, 59, 85, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(45, 59, 85, 0.6);
+  }
+  
+  .btn-register {
+    background-color: #2d3b55;
+    border-color: #2d3b55;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 0;
+    text-transform: uppercase;
+  }
+  
+  .btn-register:hover {
+    background-color: #283344;
+    border-color: #283344;
+    color: #fff;
+  }
+  
+  .red-text {
+    color: red;
+    font-size: 14px;
+  }
+  
