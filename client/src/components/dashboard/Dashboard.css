@@ -1,22 +1,103 @@
+.logout-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
 .btn-primary {
-    width: 150px;
-    border-radius: 3px;
-    letter-spacing: 1.5px;
-    margin-top: 1rem;
-  }
-  
-  .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-  }
-  
-  .search-container input[type="text"] {
-    margin: 0 0.5rem;
-  }
-  
-  .search-results {
-    margin-top: 2rem;
-  }
-  
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  width: 150px;
+  margin-top: 1rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #524dd3;
+  border-color: #524dd3;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.5);
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+  color: #fff;
+  opacity: 0.65;
+  text-decoration: none;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: #f2f2f2;
+  margin: 0 0.5rem;
+  color: #1a1a1a;
+}
+
+.search-container input[type="text"]::placeholder {
+  color: #8c8c8c;
+}
+
+.search-container input[type="text"]:focus {
+  outline: none;
+}
+
+.search-container input[type="text"]:focus::placeholder {
+  color: transparent;
+}
+
+.search-container input[type="text"]:focus {
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.5);
+}
+
+.search-container input[type="text"] + input[type="text"] {
+  margin-left: 1.5rem;
+}
+
+.search-results {
+  margin-top: 4rem;
+  list-style: none;
+  padding: 0;
+}
+
+.search-results li {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  margin-bottom: 1rem;
+  background-color: #f2f2f2;
+  color: #1a1a1a;
+}
+
+.search-results li:last-child {
+  margin-bottom: 0;
+}
+

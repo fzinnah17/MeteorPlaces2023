@@ -4,8 +4,12 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 
 const users = require("./routes/api/users");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
+
+
 
 // Bodyparser middleware
 app.use(
@@ -32,6 +36,8 @@ app.use(passport.initialize());
 
 // Passport config
 require("./config/passport")(passport);
+
+app.use(cors());
 
 // Routes
 app.use("/api/users", users);

@@ -1,0 +1,3 @@
+I had issues enabling CORS because of requestiong from the Google Maps API to the localhost.
+For the Same-Origin Policy which is a security measure enforced by web browsers that restricts web pages from making requests to a different domain than the one that served the web page. In this case, the request is being made to 'https://maps.googleapis.com/' from 'http://localhost:3000', which is a different domain.
+So, I needed to enable Cross-Origin Resource Sharing (CORS) on the server. 
