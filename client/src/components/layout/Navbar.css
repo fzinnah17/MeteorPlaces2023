@@ -1,0 +1,56 @@
+.navbar {
+  background-color: transparent;
+  padding: 1rem;
+  box-shadow: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  color: #1a1a1a;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.logout-btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #6c63ff;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.logout-btn:hover::before {
+  transform: translateX(0);
+}
+
+.logout-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.logout-btn:focus,
+.logout-btn.focus {
+  box-shadow: none;
+}
+
+.logout-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
