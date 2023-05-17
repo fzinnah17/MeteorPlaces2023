@@ -2,9 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const path = require("path");
 
 const users = require("./routes/api/users");
-const cors = require("cors");
+// const cors = require("cors");
 
 const app = express();
 app.use(cors());
@@ -37,10 +38,29 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 
-app.use(cors());
+// Enable CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // Routes
 app.use("/api/users", users);
+
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
+
+  // Serve the index.html file for all unknown routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 
