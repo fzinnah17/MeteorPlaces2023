@@ -8,27 +8,30 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
+    "build": "npm run client-install && npm run client-build",
+    "client-build": "cd client && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "concurrently": "^4.0.1",
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.0.1",
     "cors": "^2.8.5",
     "cors-anywhere": "^0.4.4",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "latest-version": "^7.0.0",
-    "mongoose": "^5.3.11",
+    "mongoose": "^7.1.1",
     "nodemon": "^2.0.22",
-    "passport": "^0.4.1",
+    "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "validator": "^10.9.0"
+    "react-router-dom": "^6.11.2",
+    "validator": "^13.9.0"
   }
 }

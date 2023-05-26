@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import { Link, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/authActions';
 
-const Register = ({ registerUser, auth, errors, history }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+const Register = ({ registerUser, auth, errors }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const navigate = useNavigate();
 
   const onSubmit = e => {
     e.preventDefault();
@@ -20,21 +21,21 @@ const Register = ({ registerUser, auth, errors, history }) => {
       password2: password2
     };
 
-    registerUser(newUser, history);
+    registerUser(newUser, navigate);
   };
 
   const onChange = e => {
     switch (e.target.name) {
-      case "name":
+      case 'name':
         setName(e.target.value);
         break;
-      case "email":
+      case 'email':
         setEmail(e.target.value);
         break;
-      case "password":
+      case 'password':
         setPassword(e.target.value);
         break;
-      case "password2":
+      case 'password2':
         setPassword2(e.target.value);
         break;
       default:
@@ -147,18 +148,14 @@ const Register = ({ registerUser, auth, errors, history }) => {
   );
 }
 
+
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
+export default connect(state => ({
   auth: state.auth,
   errors: state.errors
-});
-
-export default connect(
-  mapStateToProps,
-  { registerUser }
-)(withRouter(Register));
+}), { registerUser })(Register);
