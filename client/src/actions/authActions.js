@@ -22,7 +22,49 @@ export const registerUser = (userData, navigate) => dispatch => {
 
 
 // Login - get user token
-export const loginUser = (userData, history) => (dispatch) => {
+// export const loginUser = (userData, history) => (dispatch) => {
+//   axios
+//     .post("http://localhost:5000/api/users/login", userData)
+//     .then((res) => {
+//       const { token } = res.data;
+//       localStorage.setItem("jwtToken", token);
+//       setAuthToken(token);
+//       const decoded = jwt_decode(token);
+//       dispatch(setCurrentUser(decoded));
+//       history.push("/dashboard");
+//     })
+//     .catch((err) =>
+//       dispatch({
+//         type: GET_ERRORS,
+//         payload: err.response.data,
+//       })
+//     );
+// };
+
+// export const loginUser = (userData, history) => (dispatch) => {
+//   axios
+//     .post("http://localhost:5000/api/users/login", userData)
+//     .then((res) => {
+//       const { token } = res.data;
+//       localStorage.setItem("jwtToken", token);
+//       setAuthToken(token);
+//       const decoded = jwt_decode(token);
+//       dispatch(setCurrentUser(decoded));
+//       history.push("/dashboard");
+//     })
+//     .catch((err) => {
+//       if (err.response && err.response.data) {
+//         dispatch({
+//           type: GET_ERRORS,
+//           payload: err.response.data,
+//         });
+//       } else {
+//         console.log("An error occurred during login:", err);
+//       }
+//     });
+// };
+
+export const loginUser = (userData, navigate) => (dispatch) => {
   axios
     .post("http://localhost:5000/api/users/login", userData)
     .then((res) => {
@@ -31,15 +73,22 @@ export const loginUser = (userData, history) => (dispatch) => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
-      history.push("/dashboard");
+      navigate("/dashboard"); // Use the navigate hook instead of history.push
     })
-    .catch((err) =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data,
-      })
-    );
+    .catch((err) => {
+      if (err.response && err.response.data) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data,
+        });
+      } else {
+        console.log("An error occurred during login:", err);
+      }
+    });
 };
+
+
+
 
 // Set logged in user
 export const setCurrentUser = (decoded) => {
