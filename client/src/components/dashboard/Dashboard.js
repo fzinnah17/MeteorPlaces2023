@@ -12,6 +12,7 @@ function Dashboard({ logoutUser, auth }) {
 
 
   const handleSearch = async () => {
+    console.log(process.env.REACT_APP_API_KEY);
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}&location=${zipcode}&radius=10000&type=restaurant`
     );
