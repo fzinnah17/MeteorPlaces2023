@@ -3,6 +3,16 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
 
+// Check if token exists in localStorage and set it in the request headers
+export const checkToken = () => (dispatch) => {
+  const token = localStorage.getItem("jwtToken");
+  if (token) {
+    setAuthToken(token);
+    const decoded = jwt_decode(token);
+    dispatch(setCurrentUser(decoded));
+  }
+};
+
 export const registerUser = (userData, navigate) => dispatch => {
   axios
     .post("http://localhost:5000/api/users/register", userData)
@@ -18,51 +28,6 @@ export const registerUser = (userData, navigate) => dispatch => {
       }
     });
 };
-
-
-
-// Login - get user token
-// export const loginUser = (userData, history) => (dispatch) => {
-//   axios
-//     .post("http://localhost:5000/api/users/login", userData)
-//     .then((res) => {
-//       const { token } = res.data;
-//       localStorage.setItem("jwtToken", token);
-//       setAuthToken(token);
-//       const decoded = jwt_decode(token);
-//       dispatch(setCurrentUser(decoded));
-//       history.push("/dashboard");
-//     })
-//     .catch((err) =>
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data,
-//       })
-//     );
-// };
-
-// export const loginUser = (userData, history) => (dispatch) => {
-//   axios
-//     .post("http://localhost:5000/api/users/login", userData)
-//     .then((res) => {
-//       const { token } = res.data;
-//       localStorage.setItem("jwtToken", token);
-//       setAuthToken(token);
-//       const decoded = jwt_decode(token);
-//       dispatch(setCurrentUser(decoded));
-//       history.push("/dashboard");
-//     })
-//     .catch((err) => {
-//       if (err.response && err.response.data) {
-//         dispatch({
-//           type: GET_ERRORS,
-//           payload: err.response.data,
-//         });
-//       } else {
-//         console.log("An error occurred during login:", err);
-//       }
-//     });
-// };
 
 export const loginUser = (userData, navigate) => (dispatch) => {
   axios
@@ -88,8 +53,6 @@ export const loginUser = (userData, navigate) => (dispatch) => {
 };
 
 
-
-
 // Set logged in user
 export const setCurrentUser = (decoded) => {
   return {
@@ -106,9 +69,9 @@ export const setUserLoading = () => {
 };
 
 // Log user out
-export const logoutUser = (history) => (dispatch) => {
+export const logoutUser = (navigate) => (dispatch) => {
   localStorage.removeItem("jwtToken");
   setAuthToken(false);
   dispatch(setCurrentUser({}));
-  history.push("/login");
+  navigate("/login");
 };

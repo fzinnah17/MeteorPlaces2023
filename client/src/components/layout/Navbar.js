@@ -2,12 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import { useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 
 function Navbar({ logoutUser }) {
+  const navigate = useNavigate();
   const onLogoutClick = (e) => {
     e.preventDefault();
-    logoutUser();
+    logoutUser(navigate);
   };
 
   return (

@@ -10,10 +10,6 @@ function Dashboard({ logoutUser, auth }) {
   const [zipcode, setZipcode] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const onLogoutClick = e => {
-    e.preventDefault();
-    logoutUser();
-  };
 
   const handleSearch = async () => {
     const response = await fetch(
