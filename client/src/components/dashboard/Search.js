@@ -115,7 +115,7 @@ const handleKeyPress = (e) => {
 
 const fetchSearchResults = async (page,sort) => {
   try {
-    const response = await axios.get("/api/place/textsearch/json", {
+    const response = await axios.get("http://localhost:5000/api/place/textsearch/json", {
       params: {
         query: locationQuery,
         radius: 100,
@@ -161,7 +161,7 @@ return (
     </div>
     <div className="card-container">
       {searchResults.map((result) => (
-        <div className="card" key={result.id}>
+        <div className="card" key={result.place_id}>
           <h3>{result.name}</h3>
           <p>{result.address}</p>
           <p>{result.phone}</p>

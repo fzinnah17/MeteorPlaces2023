@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
+const axios = require("axios");
+
 
 const users = require("./routes/api/users"); // import user routes and store it in the users variable.
 
@@ -38,13 +40,6 @@ app.use(passport.initialize());
 // Passport config -> pass the passport object to configure it.
 require("./config/passport")(passport);
 
-// Routes
-app.use("/api/users", users);
-
-//Serve static assets if in production -> from the client/build directory using express.static().
-app.use(express.static(path.join(__dirname, "client", "build")));
-
-
 app.get("/api/place/textsearch/json", async (req, res) => {
   try {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -65,6 +60,34 @@ app.get("/api/place/textsearch/json", async (req, res) => {
     res.status(500).json({ error: "An error occurred" });
   }
 });
+
+// Routes
+app.use("/api/users", users);
+
+//Serve static assets if in production -> from the client/build directory using express.static().
+app.use(express.static(path.join(__dirname, "client", "build")));
+
+
+// app.get("/api/place/textsearch/json", async (req, res) => {
+//   try {
+//     const apiKey = process.env.REACT_APP_API_KEY;
+//     const query = req.query.query;
+//     const radius = req.query.radius;
+//     const type = req.query.type;
+//     const page = req.query.page; // Added parameter for page
+//     const sort = req.query.sort; // Added parameter for sort
+
+//     // Make a request to the Google Maps Places API using axios
+//     const response = await axios.get(
+//       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&radius=${radius}&type=${type}&page=${page}&sort=${sort}&key=${apiKey}`
+//     );
+
+//     res.json(response.data);
+//   } catch (error) {
+//     console.error("Error:", error);
+//     res.status(500).json({ error: "An error occurred" });
+//   }
+// });
 
 
 // Serve the index.html file for all unknown routes -> to allow the client-side routing to handle the route.
