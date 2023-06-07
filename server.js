@@ -46,12 +46,13 @@ app.get("/api/place/textsearch/json", async (req, res) => {
     const query = req.query.query;
     const radius = req.query.radius;
     const type = req.query.type;
-    const page = req.query.page; // Added parameter for page
-    const sort = req.query.sort; // Added parameter for sort
+    const zipcode = req.query.zipcode;
+    const page = req.query.page || 1;
+    const sort = req.query.sort || "distance";
 
     // Make a request to the Google Maps Places API using axios
     const response = await axios.get(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&radius=${radius}&type=${type}&page=${page}&sort=${sort}&key=${apiKey}`
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&location=${zipcode}&radius=${radius}&type=${type}&page=${page}&sort=${sort}&key=${apiKey}`
     );
 
     res.json(response.data);

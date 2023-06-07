@@ -1,3 +1,23 @@
 I had issues enabling CORS because of requestiong from the Google Maps API to the localhost.
 For the Same-Origin Policy which is a security measure enforced by web browsers that restricts web pages from making requests to a different domain than the one that served the web page. In this case, the request is being made to 'https://maps.googleapis.com/' from 'http://localhost:3000', which is a different domain.
 So, I needed to enable Cross-Origin Resource Sharing (CORS) on the server. 
+
+
+
+Here's how the flow will work from frontend to backend:
+
+The user interacts with the client-side interface and clicks the "Search" button.
+
+The client-side code (React component) will handle the button click event and invoke a function that sends an HTTP request to the server.
+
+The server-side code (Express application) will receive the incoming request from the client.
+
+In the server-side code, the route handler associated with the request will be executed. In your case, it's the route /api/place/textsearch/json.
+
+Inside the route handler, the server-side code will use Axios to make an HTTP request to the Google Maps Places API, passing the necessary parameters like the query, radius, and type.
+
+Axios will send the HTTP request to the Google Maps Places API and retrieve the response.
+
+The server-side code will receive the response from the Google Maps Places API.
+
+Finally, the server-side code will send the response back to the client, which can be accessed in the client-side code and used to update the user interface.
